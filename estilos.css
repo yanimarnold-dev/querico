@@ -331,13 +331,10 @@ aside.sabias-que strong {
     color: #f84802;
     
 }
-
 #contacto article p {
     color: #271201;
-    font-weight: bold;
-    font-size: 20px;
-    text-transform: uppercase;
-}
+    font-size: 15px;
+  }
 
 
 footer {
