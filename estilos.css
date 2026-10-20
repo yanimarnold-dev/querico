@@ -156,8 +156,17 @@ main section {
     width: 100%;
     max-width: none;
     height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 320px;
+    background-color: #000;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(15, 61, 89, 0.15);
+}
+
+#video-productos .video-link {
+    display: block;
+    width: fit-content;
+    margin: 16px auto 0;
 }
 
 
