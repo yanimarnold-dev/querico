@@ -163,13 +163,6 @@ main section {
     box-shadow: 0 6px 18px rgba(15, 61, 89, 0.15);
 }
 
-#video-productos .video-link {
-    display: block;
-    width: fit-content;
-    margin: 16px auto 0;
-}
-
-
 .grid-tres-columnas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
