@@ -57,24 +57,32 @@ nav a:hover {
 
 .heroe {
     background: linear-gradient(135deg, #fcfdfd, #fbfcfc);
-    height: 60vh;
+    min-height: 60vh;
+    box-sizing: border-box;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size:300%;
-    gap: 25px;
+    gap: 20px;
     color:#fd3c01;
 }
 
 .heroe img {
-    font: size 300px;;
     font-weight: 800;
     animation: ola 6s linear infinite;
     display: inline-block;
     will-change: transform;
+    width: min(500px, 80vw);
+    max-height: 35vh;
+    height: auto;
+    object-fit: contain;
+}
+
+.heroe h1 {
+    font-size: clamp(2.25rem, 8vw, 4.5rem);
+    line-height: 1.1;
 }
 
 @keyframes ola {
@@ -102,7 +110,7 @@ nav a:hover {
 }
 
 .heroe p {
-    font-size: 2.3rem;
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
     max-width: 650px;
     color: #fd3c01;
 }
@@ -186,6 +194,12 @@ main section {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+main section article > .boton {
+    align-self: center;
+    padding: 12px 24px;
+    font-size: 16px;
 }
 
 #infoimportante .grid-tresss-columnas article {
@@ -497,6 +511,48 @@ footer p strong {
         }
 
         @media (max-width: 600px) {
+            header {
+                height: auto;
+                justify-content: center;
+                padding: 8px 12px;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px 16px;
+                padding: 12px 8px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .heroe {
+                min-height: auto;
+                padding: 36px 16px;
+            }
+
+            .heroe img {
+                width: min(400px, 85vw);
+                max-height: 30vh;
+            }
+
+            main {
+                width: 92%;
+                margin: 36px auto;
+            }
+
+            main section h2 {
+                font-size: 1.75rem;
+                margin-bottom: 24px;
+            }
+
+            main section {
+                margin-bottom: 56px;
+            }
+
             .catalogo-main {
                 margin-top: 24px;
             }
