@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIO DE PEDIDO</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+                url("../fondoquerico.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: rgb(243, 139, 4);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            width: 100%;
+            border-top: 8px solid #dd740a;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0a0500;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="datetime-local"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccd5ae;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: #faf7f2;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #d4a373;
+            background-color: #fff;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #faf7f2;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccd5ae;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: #d4a373;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #7c4106;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #fc5304;
+        }
+
+        .volver {
+            display: block;
+            margin-top: 16px;
+            color: #1a0d01;
+            text-align: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2> COMPLETÁ EL FORMULARIO</h2>
+        <form id="formulario-pedido">
+
+            <div class="form-group">
+                <label for="nombre">Nombre y Apellido *</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Ej: María García">
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono / WhatsApp *</label>
+                <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +54 9 3482-555678">
+            </div>
+
+            <div class="form-group">
+                <label for="pedido">Pedido *</label>
+                <textarea id="pedido" name="pedido" rows="3" required placeholder="Ej: Escribí tu pedido"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="retiro">Día y horario estimado de retiro *</label>
+                <input type="datetime-local" id="retiro" name="retiro" required>
+            </div>
+
+
+            <div class="form-group">
+                <label> ¡Te interesa recibir información de algunos de estos productos? *</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="productos[]" value="Bandejas Materas"> Bandejas Materas
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="productos[]" value="Budines"> Budines
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="productos[]" value="Tartas Dulces"> Tartas
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="productos[]" value="Postres Individuales"> Postres Individuales
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="aclaraciones">¿ALGUNA CONSULTA O SUGERENCIA?</label>
+                <textarea id="aclaraciones" name="aclaraciones" rows="3"
+                    placeholder="Si tenés  duda o sugerencia, escribÍla acá..."></textarea>
+            </div>
+
+
+            <button type="submit">ENVIAR</button>
+
+        </form>
+        <a class="volver" href="../index.html">Volver a la página principal</a>
+    </div>
+    <script>
+        const formulario = document.getElementById("formulario-pedido");
+        const numeroWhatsApp = "5493482778890";
+
+        formulario.addEventListener("submit", (evento) => {
+            evento.preventDefault();
+
+            const nombre = document.getElementById("nombre").value.trim();
+            const telefono = document.getElementById("telefono").value.trim();
+            const pedido = document.getElementById("pedido").value.trim();
+            const retiro = document.getElementById("retiro").value;
+            const aclaraciones = document.getElementById("aclaraciones").value.trim();
+            const productos = Array.from(
+                formulario.querySelectorAll('input[name="productos[]"]:checked')
+            ).map((producto) => producto.value);
+
+            const mensaje = [
+                "Hola, quiero realizar un pedido.",
+                "",
+                `Nombre: ${nombre}`,
+                `Teléfono: ${telefono}`,
+                `Pedido: ${pedido}`,
+                `Día y horario de retiro: ${retiro}`,
+                `Productos de interés: ${productos.length ? productos.join(", ") : "Ninguno"}`,
+                `Sugerencia: ${aclaraciones || "Ninguna"}`
+            ].join("\n");
+
+            const enlaceWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(enlaceWhatsApp, "_blank", "noopener,noreferrer");
+        });
+    </script>
+</body>
+
+</html>
