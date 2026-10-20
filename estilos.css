@@ -111,8 +111,10 @@ nav a:hover {
 
 .heroe p {
     font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-    max-width: 650px;
-    color: #fd3c01;
+    width: 90%;
+    max-width: 1200px;
+    color: #241904;
+    font-weight: bold;
 }
 
 .boton {
